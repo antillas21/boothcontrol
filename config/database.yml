@@ -20,9 +20,12 @@ development:
   #   repo2:
   #     ...
 
-test:
+test: &test
   database: boothcontrol_test
   <<: *defaults
 # production:
 #   database: registrame_production
 #   <<: *defaults
+
+cucumber:
+  <<: *test
