@@ -1,0 +1,12 @@
+%h1 New account
+%div.success
+  %h3 You signed up!
+  %p Please complete any missing info from the form below.
+  = form_tag new_account_sessions_path do
+    = label_tag 'email', 'Email address'
+    = text_field_tag 'email', session[:auth_hash][:email]
+    = label_tag 'name', 'Name'
+    = text_field_tag 'name', session[:auth_hash][:name]
+    = hidden_field_tag 'image', session[:auth_hash][:image]
+    = submit_tag "Create new account"
+    = submit_tag "Cancel"

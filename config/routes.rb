@@ -1,8 +1,22 @@
 Boothcontrol::Application.routes.draw do
 
   # defining routes for omniauth providers
-  match '/auth/:identity/callback' => 'identities#create' 
-  match '/auth/failure' => 'identities#failure'
+  match '/auth/:identity/callback' => 'sessions#create' 
+  match '/auth/failure' => 'sessions#failure'
+
+  # omniauth pure
+  match '/signin' => "sessions#signin"
+  match '/signout' => "session#signout"
+
+  resources :sessions, :only => [:create, :destroy] do
+    collection do
+      get 'signin'
+      get 'signout'
+      get 'signup'
+      get 'failure'
+      post 'new_account'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -54,6 +68,7 @@ Boothcontrol::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+  root :to => 'pages#home'
 
   # See how all your routes lay out with "rake routes"
 
