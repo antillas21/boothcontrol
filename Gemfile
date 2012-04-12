@@ -28,7 +28,9 @@ gem 'dm-observer',          DM_VERSION
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'jquery-rails'
 
+gem 'omniauth-twitter', :git => 'https://github.com/arunagw/omniauth-twitter.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,9 +43,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
-
 
 group :test do   
   gem 'rspec-rails', RSPEC_VERSION

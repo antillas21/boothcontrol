@@ -1,4 +1,9 @@
 Boothcontrol::Application.routes.draw do
+
+  # defining routes for omniauth providers
+  match '/auth/:identity/callback' => 'identities#create' 
+  match '/auth/failure' => 'identities#failure'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

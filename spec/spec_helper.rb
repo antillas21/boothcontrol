@@ -32,7 +32,7 @@ RSpec.configure do |config|
 
   [:all, :each].each do |x|
     config.before(x) do
-      Timecop.return
+      # Timecop.return
       repository(:default) do |repository|
         transaction = DataMapper::Transaction.new(repository)
         transaction.begin
