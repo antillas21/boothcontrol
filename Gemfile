@@ -51,6 +51,10 @@ group :test do
   gem 'rspec-rails', RSPEC_VERSION
   gem 'cucumber-rails'
 end
+
+group :development do
+  gem 'puma'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
