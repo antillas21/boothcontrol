@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -28,6 +29,10 @@ RSpec.configure do |config|
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
+
+
+  config.include IntegrationSpecHelper, :type => :request, :js => true
+
   config.infer_base_class_for_anonymous_controllers = false
 
   [:all, :each].each do |x|
@@ -45,3 +50,14 @@ RSpec.configure do |config|
     end
   end
 end
+
+OmniAuth.config.test_mode = true
+
+OmniAuth.config.mock_auth[:twitter] = {
+  'provider' => 'twitter', 'uid' => '123456',
+  'info' => {
+    'name' => 'John Doe'
+  }
+}
+
+Capybara.default_host = 'http://127.0.0.1:3000'
