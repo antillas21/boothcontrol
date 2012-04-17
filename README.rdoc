@@ -7,6 +7,5 @@ You need to create a config/initializers/omniauth.rb file with the following con
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :twitter, "consumer_key", "consumer_secret" 
   provider :facebook, "App ID", "App Secret"
-  provider :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google',
-    :identifier => 'https://www.google.com/accounts/o8/id'
+  provider :google_oauth2, "client_ID", "client_secret", {access_type: 'online', approval_prompt: ''}
 end
