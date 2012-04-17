@@ -3,9 +3,11 @@ class Identity
   include DataMapper::Resource
 
   property :id, Serial, :index => true
-  property :provider, String, :index => [:service_provider]
-  property :uid, String, :length => 255, :index => [:service_provider]
-  # property :email, String, :length => 120
+  property :provider, String, :required => true, :index => [:service_provider]
+  property :uid, String, :length => 255, :required => true, :index => [:service_provider]
+
+  validates_presence_of :provider, :uid
+  validates_uniqueness_of :uid
 
   belongs_to :user
 
